@@ -30,6 +30,18 @@ namespace ApiMaui
 
         [JsonProperty("company")]
         public Company Company { get; set; }
+
+        public char FirstLetter
+        {
+            get
+            {
+                return Name[0];
+            }
+            set
+            {
+                Name = value + Name.Substring(1);
+            }
+        }
     }
 
     public partial class Address
