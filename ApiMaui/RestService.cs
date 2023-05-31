@@ -36,6 +36,27 @@ namespace ApiMaui
 
             return users;
         }
+
+        public async Task<List<Photos>> GetPhotosAsync(string uri)
+        {
+            List<Photos> photos = null;
+
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    photos = JsonConvert.DeserializeObject<List<Photos>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\tERROR {0}", ex.Message);
+            }
+
+            return photos;
+        }
     }
 }
 

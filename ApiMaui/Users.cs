@@ -44,6 +44,14 @@ namespace ApiMaui
         }
     }
 
+    public class UserNameComparer : IComparer<Users>
+    {
+        public int Compare(Users x, Users y)
+        {
+            return x.Name.CompareTo(y.Name);
+        }
+    }
+
     public partial class Address
     {
         [JsonProperty("street")]
@@ -85,15 +93,15 @@ namespace ApiMaui
 
     public partial class Users
     {
-        public static List<Users> FromJson(string json) => JsonConvert.DeserializeObject<List<Users>>(json, ApiMaui.Converter.Settings);
+        public static List<Users> FromJson(string json) => JsonConvert.DeserializeObject<List<Users>>(json, ApiMaui.Converterr.Settings);
     }
 
-    public static class Serialize
+    public static class Serializee
     {
-        public static string ToJson(this List<Users> self) => JsonConvert.SerializeObject(self, ApiMaui.Converter.Settings);
+        public static string ToJson(this List<Users> self) => JsonConvert.SerializeObject(self, ApiMaui.Converterr.Settings);
     }
 
-    internal static class Converter
+    internal static class Converterr
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
