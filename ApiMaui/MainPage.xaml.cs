@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 
 namespace ApiMaui;
@@ -35,11 +36,9 @@ public partial class MainPage : ContentPage
         Grid grid = sender as Grid;
         if (grid != null)
         {
-            foreach (View child in grid.Children)
-            {
-                //Console.WriteLine(child);
-            }
-            await DisplayAlert("MAUI", "Nome", "OK");
+            Label thirdChild = grid.Children[2] as Label;
+            int UserID = Convert.ToInt32(thirdChild.Text.ToString());
+            await Navigation.PushAsync(new UserPosts(UserID));
         }
     }
 }

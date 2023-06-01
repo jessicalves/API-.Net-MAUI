@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ApiMaui.MainPage">
-    <RefreshView x:Name="refreshView" RefreshColor="Teal">
+    <RefreshView x:Name="refreshView" RefreshColor="{StaticResource Primary}">
         <ScrollView>
             <VerticalStackLayout Margin="10">
                 <CollectionView x:Name="collectionView" VerticalScrollBarVisibility="Always">
@@ -21,8 +21,13 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Frame Grid.Column="0" Grid.RowSpan="3" HeightRequest="50" WidthRequest="50" CornerRadius="25" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,10,0" Padding="0" BackgroundColor="{StaticResource Primary}"/>
-                                <Label Grid.Column="0" Grid.RowSpan= "3" Text="{Binding FirstLetter}" FontSize="16" Margin="0,10,10,0" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Frame Grid.Column="0" Grid.RowSpan="3" HeightRequest="50" WidthRequest="50" CornerRadius="25"
+                                       HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,10,0" Padding="0"
+                                       BackgroundColor="{StaticResource Primary}"/>
+                                <Label Grid.Column="0" Grid.RowSpan= "3" Text="{Binding FirstLetter}" FontSize="16"
+                                       Margin="0,10,10,0" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label IsVisible="False" Text="{Binding Id}"/>
                                 <Label Text="{Binding Name}" Grid.Row="0" Grid.Column="1" FontAttributes="Bold"/>
                                 <Label Text="{Binding Email}" Grid.Row="1" Grid.Column="1" FontAttributes="Italic"/>
                                 <Label Text="{Binding Phone}" Grid.Row="2" Grid.Column="1" FontAttributes="Italic"/>
